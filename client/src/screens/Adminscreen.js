@@ -1,13 +1,9 @@
 import React , {useState, useEffect} from "react";
 import { Tabs } from "antd";
 import axios from "axios";
-import Swal from "sweetalert2";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
-import {amenities} from '../room'
-import Success from "../components/Success";
-import { Tag, Divider } from "antd";
-import RadioGroupContext from "antd/lib/radio/context";
+import { amenities } from '../room'
 
 
 
@@ -222,7 +218,7 @@ export function Addroom() {
   const [description, setdescription] = useState("");
   const [phonenumber, setphonenumber] = useState("");
   const [type, settype] = useState("");
-  const [amenities, setamenity] = useState( "");
+  const [amenities, setamenity] = useState("");
   const [surcharge, setsurcharge] = useState("");
   const [image1, setimage1] = useState("");
   const [image2, setimage2] = useState("");
@@ -232,7 +228,7 @@ export function Addroom() {
   async function addRoom() {
       const roomobj = {
           room , 
-          rentperday, maxcount ,description ,phonenumber ,type , amentities:[], surcharge ,image1 ,image2 ,image3
+          rentperday, maxcount ,description ,phonenumber ,type , amenities:[], surcharge ,image1 ,image2 ,image3
       }
       try {
           const result = await axios.post('/api/rooms/addroom' , roomobj)

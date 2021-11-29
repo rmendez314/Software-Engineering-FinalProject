@@ -14,7 +14,7 @@ export default function Registerscreen() {
   const[success, setsuccess]=useState(false) 
   async function register(){
 
-      if(password!=cpassword)
+      if(password !== cpassword)
       {
           alert("passwords not matched")
       }
