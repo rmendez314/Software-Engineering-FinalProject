@@ -136,7 +136,7 @@ function Addroom() {
               setimage3(e.target.value);
             }}
           />
-          <div className='mt-1 text-right'>
+            <div className='mt-1 text-right'>
           <button className="btn btn-primary" onClick={addRoom}>ADD ROOM</button>
           </div>
         </div>

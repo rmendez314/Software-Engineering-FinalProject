@@ -6,6 +6,7 @@ import Error from "../components/Error";
 import Loader from "../components/Loader";
 import Success from "../components/Success";
 import { Tag, Divider } from "antd";
+import RadioGroupContext from "antd/lib/radio/context";
 
 
 
@@ -146,7 +147,7 @@ export function Rooms() {
                                    <td>{room.rentperday}</td>
                                    <td>{room.maxcount}</td>
                                    <td>{room.phonenumber}</td>
-                                   <td>{room.amenities.join(" ")} </td>
+                                   <td>{room.amenities.join(",")} </td>
                                    <td>{room.surcharge}</td>
                                </tr>
                            })}
@@ -213,7 +214,8 @@ export function Users(){
 }
 
 
-export function Addroom() {
+export function Addroom(props) {
+
   const [room, setroom] = useState("");
   const [rentperday, setrentperday] = useState();
   const [maxcount, setmaxcount] = useState();
@@ -225,8 +227,9 @@ export function Addroom() {
   const [image1, setimage1] = useState("");
   const [image2, setimage2] = useState("");
   const [image3, setimage3] = useState("");
-  async function addRoom()
-  {
+  const [state, setState] = useState(null)
+
+  async function addRoom() {
       const roomobj = {
           room , 
           rentperday, maxcount ,description ,phonenumber ,type , amentities:[], surcharge ,image1 ,image2 ,image3
@@ -237,9 +240,11 @@ export function Addroom() {
           
       }
   }
+
+
+
   return (
     <div className="row">
-     
         <div className="col-md-5">
           <input
             type="text"
@@ -290,9 +295,7 @@ export function Addroom() {
               setphonenumber(e.target.value);
             }}
           />
-          
         </div>
-
         <div className="col-md-6">
         <input
             type="text"
@@ -348,11 +351,84 @@ export function Addroom() {
               setimage3(e.target.value);
             }}
           />
+            <form>
+                <label className="text-center">
+                    <h4>
+                        Select Amenities:
+                    </h4>
+                </label>
+                <table>
+                    <tr>
+                        <td className="amenities">
+                            <div className="radio">
+                                <label form="Pool">
+                                    <input
+                                        type="radio"
+                                        className="radio-buttons"
+                                        label="Pool"
+                                        value="Pool"
+                                        id="Pool"
+                                        onChange={(e) => {
+                                            setamenities(e.target.value)
+                                        }}
+                                    />
+                                    Pool
+                                </label>
+                            </div>
+                        </td>
+                        <td className="amenities">
+                            <div className="radio">
+                                <label form="Gym">
+                                    <input
+                                        type="radio"
+                                        value="Gym"
+                                        id="Gym"
+                                        onChange={(e) => {
+                                            setamenities(e.target.value)
+                                        }}
+                                    />
+                                    Gym
+                                </label>
+                            </div>
+                        </td>
+                        <td className="amenities">
+                            <div className="radio">
+                                <label form="Spa">
+                                    <input
+                                        type="radio"
+                                        value="Spa"
+                                        id="spa"
+                                        onChange={(e) => {
+                                            setamenities(e.target.value)
+                                        }}
+                                    />
+                                    Spa
+                                </label>
+                            </div>
+                        </td>
+                        <td className="amenities">
+                            <div>
+                                <label className="label" form= "Business-Office">
+                                    <input
+                                        type="radio"
+                                        value="Business Office"
+                                        id="Business-Office"
+                                        className="radio"
+                                        onChange={(e) => {
+                                            setamenities(e.target.value)
+                                        }}
+                                    />
+                                    Business Office
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
           <div className='mt-1 text-right'>
           <button className="btn btn-primary" onClick={addRoom}>ADD ROOM</button>
           </div>
         </div>
-     
     </div>
   );
 }

@@ -91,3 +91,27 @@ p{
   color:black !important;
   margin-top: 10px !important;
 }
+
+.amenities {
+  padding-right: 60px;
+}
+
+.radio-buttons {
+  text-align: right;
+}
+
+text-center{
+  text-align: center;
+  align-content: center;
+}
+
+.label {
+  float: left;
+}
+
+input[type=radio],
+input.radio {
+  float: left;
+  clear: none;
+  margin: 2px 0 0 2px;
+}
