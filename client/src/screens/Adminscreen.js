@@ -215,19 +215,19 @@ export function Users(){
 }
 
 
-export function Addroom(props) {
+export function Addroom() {
   const [room, setroom] = useState("");
   const [rentperday, setrentperday] = useState();
   const [maxcount, setmaxcount] = useState();
   const [description, setdescription] = useState("");
   const [phonenumber, setphonenumber] = useState("");
   const [type, settype] = useState("");
-  const [amenities, setamenity] = useState("");
+  const [amenities, setamenity] = useState( "");
   const [surcharge, setsurcharge] = useState("");
   const [image1, setimage1] = useState("");
   const [image2, setimage2] = useState("");
   const [image3, setimage3] = useState("");
-  const [checked, setChecked] = useState(null)
+  const [check, setChecked] = useState("")
 
   async function addRoom() {
       const roomobj = {
@@ -350,10 +350,11 @@ export function Addroom(props) {
             }}
           />
             <form>
-                <label className="text-center">
-                    <h4>
+                <div className="amenities-form">
+                <label>
+                    <h5>
                         Select Amenities:
-                    </h4>
+                    </h5>
                 </label>
                 <table>
                     <tr>
@@ -363,11 +364,11 @@ export function Addroom(props) {
                                     <input
                                         type="radio"
                                         className="radio-buttons"
-                                        label="Pool"
                                         value="Pool"
                                         id="Pool"
-                                        checked={(checked === 'Pool')}
+                                        checked={(check === 'Pool')}
                                         onChange={(e) => {
+                                            setChecked(check)
                                             setamenity(e.target.value)
                                         }}
                                     />
@@ -380,10 +381,11 @@ export function Addroom(props) {
                                 <label form="Gym">
                                     <input
                                         type="radio"
-                                        value="Gym"
                                         id="Gym"
-                                        checked={(checked === 'Gym')}
+                                        value="Gym"
+                                        checked={(check === 'Gym')}
                                         onChange={(e) => {
+                                            setChecked(check)
                                             setamenity(e.target.value)
                                         }}
                                     />
@@ -396,10 +398,11 @@ export function Addroom(props) {
                                 <label form="Spa">
                                     <input
                                         type="radio"
+                                        id="Spa"
                                         value="Spa"
-                                        id="spa"
-                                        checked={(checked === 'Spa')}
+                                        checked={(check === 'Spa')}
                                         onChange={(e) => {
+                                            setChecked(check)
                                             setamenity(e.target.value)
                                         }}
                                     />
@@ -412,11 +415,11 @@ export function Addroom(props) {
                                 <label className="label" form= "Business-Office">
                                     <input
                                         type="radio"
-                                        value="Business Office"
                                         id="Business-Office"
-                                        checked={(checked === 'Business Office')}
-                                        className="radio"
+                                        value="Business Office"
+                                        checked={(check === 'Business Office')}
                                         onChange={(e) => {
+                                            setChecked(check)
                                             setamenity(e.target.value)
                                         }}
                                     />
@@ -426,6 +429,7 @@ export function Addroom(props) {
                         </td>
                     </tr>
                 </table>
+                </div>
             </form>
           <div className='mt-1 text-right'>
           <button className="btn btn-primary" onClick={addRoom}>ADD ROOM</button>
