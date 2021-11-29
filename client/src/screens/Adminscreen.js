@@ -4,6 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
+import {amenities} from '../room'
 import Success from "../components/Success";
 import { Tag, Divider } from "antd";
 import RadioGroupContext from "antd/lib/radio/context";
@@ -215,19 +216,18 @@ export function Users(){
 
 
 export function Addroom(props) {
-
   const [room, setroom] = useState("");
   const [rentperday, setrentperday] = useState();
   const [maxcount, setmaxcount] = useState();
   const [description, setdescription] = useState("");
   const [phonenumber, setphonenumber] = useState("");
   const [type, settype] = useState("");
-  const [amenities, setamenities] = useState("");
+  const [amenities, setamenity] = useState("");
   const [surcharge, setsurcharge] = useState("");
   const [image1, setimage1] = useState("");
   const [image2, setimage2] = useState("");
   const [image3, setimage3] = useState("");
-  const [state, setState] = useState(null)
+  const [checked, setChecked] = useState(null)
 
   async function addRoom() {
       const roomobj = {
@@ -240,8 +240,6 @@ export function Addroom(props) {
           
       }
   }
-
-
 
   return (
     <div className="row">
@@ -312,7 +310,7 @@ export function Addroom(props) {
             placeholder="amenities"
             value={amenities}
             onChange={(e) => {
-              setamenities(e.target.value);
+              setamenity(e.target.value);
             }}
           />
            <input
@@ -368,8 +366,9 @@ export function Addroom(props) {
                                         label="Pool"
                                         value="Pool"
                                         id="Pool"
+                                        checked={(checked === 'Pool')}
                                         onChange={(e) => {
-                                            setamenities(e.target.value)
+                                            setamenity(e.target.value)
                                         }}
                                     />
                                     Pool
@@ -383,8 +382,9 @@ export function Addroom(props) {
                                         type="radio"
                                         value="Gym"
                                         id="Gym"
+                                        checked={(checked === 'Gym')}
                                         onChange={(e) => {
-                                            setamenities(e.target.value)
+                                            setamenity(e.target.value)
                                         }}
                                     />
                                     Gym
@@ -398,8 +398,9 @@ export function Addroom(props) {
                                         type="radio"
                                         value="Spa"
                                         id="spa"
+                                        checked={(checked === 'Spa')}
                                         onChange={(e) => {
-                                            setamenities(e.target.value)
+                                            setamenity(e.target.value)
                                         }}
                                     />
                                     Spa
@@ -413,9 +414,10 @@ export function Addroom(props) {
                                         type="radio"
                                         value="Business Office"
                                         id="Business-Office"
+                                        checked={(checked === 'Business Office')}
                                         className="radio"
                                         onChange={(e) => {
-                                            setamenities(e.target.value)
+                                            setamenity(e.target.value)
                                         }}
                                     />
                                     Business Office
