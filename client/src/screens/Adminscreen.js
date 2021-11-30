@@ -218,18 +218,21 @@ export function Addroom() {
   const [description, setdescription] = useState("");
   const [phonenumber, setphonenumber] = useState("");
   const [type, settype] = useState("");
-  const [amenities, setamenity] = useState("");
+  const [amenities, setamenity] = useState([]);
   const [surcharge, setsurcharge] = useState("");
   const [image1, setimage1] = useState("");
   const [image2, setimage2] = useState("");
   const [image3, setimage3] = useState("");
   const [check, setChecked] = useState("")
+    let array = [];
 
   async function addRoom() {
       const roomobj = {
           room , 
           rentperday, maxcount ,description ,phonenumber ,type , amenities:[], surcharge ,image1 ,image2 ,image3
       }
+      amenities.map((x, i )=>  x === array[i])
+      setamenity(amenities)
       try {
           const result = await axios.post('/api/rooms/addroom' , roomobj)
       } catch (error) {
@@ -364,8 +367,9 @@ export function Addroom() {
                                         id="Pool"
                                         checked={(check === 'Pool')}
                                         onChange={(e) => {
+                                            array.push("Pool")
                                             setChecked(check)
-                                            setamenity(e.target.value)
+                                            //setamenity(e.target.value)
                                         }}
                                     />
                                     Pool
@@ -381,8 +385,9 @@ export function Addroom() {
                                         value="Gym"
                                         checked={(check === 'Gym')}
                                         onChange={(e) => {
+                                            array.push("Gym")
                                             setChecked(check)
-                                            setamenity(e.target.value)
+                                            //setamenity(e.target.value)
                                         }}
                                     />
                                     Gym
@@ -391,15 +396,17 @@ export function Addroom() {
                         </td>
                         <td className="amenities">
                             <div className="radio">
+
                                 <label form="Spa">
                                     <input
                                         type="radio"
                                         id="Spa"
                                         value="Spa"
-                                        checked={(check === 'Spa')}
+                                        checked={(check === "Spa")}
                                         onChange={(e) => {
+                                            array.push("Spa")
                                             setChecked(check)
-                                            setamenity(e.target.value)
+                                            //setamenity(e.target.value)
                                         }}
                                     />
                                     Spa
@@ -415,8 +422,9 @@ export function Addroom() {
                                         value="Business Office"
                                         checked={(check === 'Business Office')}
                                         onChange={(e) => {
+                                            array.push("Business Office")
                                             setChecked(check)
-                                            setamenity(e.target.value)
+                                            //setamenity(e.target.value)
                                         }}
                                     />
                                     Business Office
@@ -426,9 +434,14 @@ export function Addroom() {
                     </tr>
                 </table>
                 </div>
+
             </form>
           <div className='mt-1 text-right'>
-          <button className="btn btn-primary" onClick={addRoom}>ADD ROOM</button>
+          <button className="btn btn-primary" onClick={event =>
+              addRoom
+                }>
+              ADD ROOM
+          </button>
           </div>
         </div>
     </div>

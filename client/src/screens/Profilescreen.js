@@ -95,9 +95,9 @@ export const MyOrders = () => {
               <p><b>Check In : </b>{booking.fromdate}</p>
               <p><b>Check Out : </b>{booking.todate}</p>
               <p><b>Amount : </b> {booking.totalAmount}</p>
-              <p><b>Status</b> : {booking.status =='booked' ? (<Tag color="green">Confirmed</Tag>) : (<Tag color="red">Cancelled</Tag>)}</p>
+              <p><b>Status</b> : {booking.status === 'booked' ? (<Tag color="green">Confirmed</Tag>) : (<Tag color="red">Cancelled</Tag>)}</p>
               <div className='text-right'>
-              {booking.status=='booked' && (<button className='btn btn-primary' onClick={()=>cancelBooking(booking._id , booking.roomid)}>Cancel Booking</button>)}
+              {booking.status === 'booked' && (<button className='btn btn-primary' onClick={()=>cancelBooking(booking._id , booking.roomid)}>Cancel Booking</button>)}
               </div>
             </div>
           </div>
